@@ -132,6 +132,10 @@ limit     | INT    |    NO      | Default 100; max 5000
 
 Get recent trades.
 
+### HTTP Request
+
+`GET /spot/trades`
+
 ### URL Parameters
 
 Parameter | Type   |  Mandatory | Description
