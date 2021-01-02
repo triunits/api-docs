@@ -146,5 +146,5 @@ This endpoint fetch the system status.
 
 ### HTTP Request
 
-`GET https://fapi.triunits.com/spot/systemStatus`
+`GET /spot/systemStatus`
 
