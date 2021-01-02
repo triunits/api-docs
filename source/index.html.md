@@ -1,17 +1,11 @@
 ---
 title: API Reference
 
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
-
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  - <a href='https://triunits.com'>TRIUNITS EXCHANGE</a>
 
 includes:
+  - markets
   - errors
 
 search: true
@@ -19,223 +13,138 @@ search: true
 code_clipboard: true
 ---
 
-# Introduction
+# General Info
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+## General API Information
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+- The base endpoint is: **https://fapi.triunits.com**
+- All endpoints return either a JSON object or array.
+- Data is returned in ascending order. Oldest first, newest last.
+- All time and timestamp related fields are in milliseconds.
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+## Intervals
 
-# Authentication
+m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 
-> To authorize, use this code:
+- 1m
+- 3m
+- 5m
+- 15m
+- 30m
+- 1h
+- 2h
+- 4h
+- 6h
+- 8h
+- 12h
+- 1d
+- 3d
+- 1w
+- 1M
 
-```ruby
-require 'kittn'
+## Filters
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+### PRICE_FILTER
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> ExchangeInfo Format:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "filterType": "PRICE_FILTER",
+  "minPrice": "0.00000100",
+  "maxPrice": "100000.00000000",
+  "tickSize": "0.00000100"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+The PRICE_FILTER defines the price rules for a symbol. There are 3 parts:
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+- minPrice defines the minimum price/stopPrice allowed; disabled on minPrice == 0.
+- maxPrice defines the maximum price/stopPrice allowed; disabled on maxPrice == 0.
+- tickSize defines the intervals that a price/stopPrice can be increased/decreased by; disabled on tickSize == 0.
 
-### HTTP Request
+Any of the above variables can be set to 0, which disables that rule in the price filter. In order to pass the price filter, the following must be true for price/stopPrice of the enabled rules:
 
-`GET http://example.com/kittens/<ID>`
+- price >= minPrice
+- price <= maxPrice
+- (price-minPrice) % tickSize == 0
 
-### URL Parameters
+### PERCENT_PRICE
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
+> ExchangeInfo Format:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "filterType": "PERCENT_PRICE",
+  "multiplierUp": "1.3000",
+  "multiplierDown": "0.7000",
+  "avgPriceMins": 5
 }
 ```
 
-This endpoint deletes a specific kitten.
+The `PERCENT_PRICE` filter defines valid range for a price based on the average of the previous trades. `avgPriceMins` is the number of minutes the average price is calculated over. 0 means the last price is used.
+
+In order to pass the `percent price`, the following must be true for price:
+
+price <= `weightedAveragePrice` * `multiplierUp`
+price >= `weightedAveragePrice` * `multiplierDown`
+
+### LOT_SIZE
+
+> ExchangeInfo format:
+
+```json
+{
+  "filterType": "LOT_SIZE",
+  "minQty": "0.00100000",
+  "maxQty": "100000.00000000",
+  "stepSize": "0.00100000"
+}
+```
+
+The LOT_SIZE filter defines the quantity (aka "lots" in auction terms) rules for a symbol. There are 3 parts:
+
+- minQty defines the minimum quantity/icebergQty allowed.
+- maxQty defines the maximum quantity/icebergQty allowed.
+- stepSize defines the intervals that a quantity/icebergQty can be increased/decreased by.
+In order to pass the lot size, the following must be true for quantity/icebergQty:
+
+- quantity >= minQty
+- quantity <= maxQty
+- (quantity-minQty) % stepSize == 0
+
+### MIN_NOTIONAL
+
+> ExchangeInfo Format:
+
+```json
+{
+  "filterType": "MIN_NOTIONAL",
+  "minNotional": "0.00100000",
+  "applyToMarket": true,
+  "avgPriceMins": 5
+}
+```
+
+The MIN_NOTIONAL filter defines the minimum notional value allowed for an order on a symbol. An order's notional value is the price * quantity. If the order is an Algo order (e.g. STOP_LOSS_LIMIT), then the notional value of the stopPrice * quantity will also be evaluated. If the order is an Iceberg Order, then the notional value of the price * icebergQty will also be evaluated. applyToMarket determines whether or not the MIN_NOTIONAL filter will also be applied to MARKET orders. Since MARKET orders have no price, the average price is used over the last avgPriceMins minutes. avgPriceMins is the number of minutes the average price is calculated over. 0 means the last price is used.
+
+
+# Wallet Endpoints
+
+## System Status (System)
+
+> Response:
+
+```json
+{
+  "status": 0,      // 0: normal，1：system maintenance
+  "msg": "normal"   // normal or system maintenance
+}
+```
+
+This endpoint fetch the system status.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+`GET https://fapi.triunits.com/spot/systemStatus`
 
