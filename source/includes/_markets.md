@@ -278,7 +278,7 @@ Latest price for a symbol or symbols.
 
 ### HTTP Endpoint
 
-`GET /ticker/price`
+`GET /spot/ticker/price`
 
 ### URL Parameters
 
@@ -328,7 +328,7 @@ Best price/qty on the order book for a symbol or symbols.
 
 ### HTTP Endpoint
 
-`GET /ticker/bookTicker`
+`GET /spot/ticker/bookTicker`
 
 ### URL Parameters
 
