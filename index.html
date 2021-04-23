@@ -354,6 +354,29 @@
               </ul>
           </li>
           <li>
+            <a href="#futures-market-endpoints" class="toc-h1 toc-link" data-title="Futures Market Endpoints">Futures Market Endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#futures-test-connectivity" class="toc-h2 toc-link" data-title="Futures Test Connectivity">Futures Test Connectivity</a>
+                  </li>
+                  <li>
+                    <a href="#futures-check-server-time" class="toc-h2 toc-link" data-title="Futures Check Server Time">Futures Check Server Time</a>
+                  </li>
+                  <li>
+                    <a href="#futures-exchange-information" class="toc-h2 toc-link" data-title="Futures Exchange Information">Futures Exchange Information</a>
+                  </li>
+                  <li>
+                    <a href="#futures-order-book" class="toc-h2 toc-link" data-title="Futures Order Book">Futures Order Book</a>
+                  </li>
+                  <li>
+                    <a href="#futures-recent-trade-list" class="toc-h2 toc-link" data-title="Futures Recent Trade List">Futures Recent Trade List</a>
+                  </li>
+                  <li>
+                    <a href="#futures-kline-candlestick-data" class="toc-h2 toc-link" data-title="Futures Kline/Candlestick Data">Futures Kline/Candlestick Data</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -870,6 +893,292 @@ If the symbol is not sent, prices for all symbols will be returned in an array.
 
 <aside class="notice">
 If the symbol is not sent, bookTickers for all symbols will be returned in an array.
+</aside>
+<h1 id='futures-market-endpoints'>Futures Market Endpoints</h1><h2 id='futures-test-connectivity'>Futures Test Connectivity</h2>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre></div>
+<p>Test connectivity to the Rest API.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /fapi/ping</code></p>
+<h2 id='futures-check-server-time'>Futures Check Server Time</h2>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"serverTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Test connectivity to the Rest API.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /fapi/time</code></p>
+<h2 id='futures-exchange-information'>Futures Exchange Information</h2>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchangeFilters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"rateLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINUTE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"intervalNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2400</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rateLimitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_WEIGHT"</span><span class="w"> 
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINUTE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"intervalNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rateLimitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERS"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"serverTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1565613908500</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"symbols"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLZUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLZUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contractType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERPETUAL"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deliveryDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">4133404800000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"onboardDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1598252400000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"maintMarginPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5000"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">ignore</span><span class="w">
+            </span><span class="nl">"requiredMarginPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.0000"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">ignore</span><span class="w">
+            </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLZ"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marginAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pricePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">please</span><span class="w"> </span><span class="err">do</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">tickSize</span><span class="w">
+            </span><span class="nl">"quantityPrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">please</span><span class="w"> </span><span class="err">do</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">stepSize</span><span class="w">
+            </span><span class="nl">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"underlyingType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COIN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"underlyingSubType"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"STORAGE"</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"settlePlan"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"triggerProtect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">threshold</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">algo</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="s2">"priceProtect"</span><span class="w">
+            </span><span class="nl">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARKET_LOT_SIZE"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"590119"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAX_NUM_ORDERS"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAX_NUM_ALGO_ORDERS"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"notional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> 
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERCENT_PRICE"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"multiplierUp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.1500"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"multiplierDown"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.8500"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"multiplierDecimal"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"OrderType"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"MARKET"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"STOP"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"STOP_MARKET"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"TAKE_PROFIT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"TAKE_PROFIT_MARKET"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"TRAILING_STOP_MARKET"</span><span class="w"> 
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"IOC"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"FOK"</span><span class="p">,</span><span class="w"> 
+                </span><span class="s2">"GTX"</span><span class="w"> 
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Current exchange trading rules and symbol information</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /fapi/exchangeInfo</code></p>
+<h2 id='futures-order-book'>Futures Order Book</h2>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"lastUpdateId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1027024</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"E"</span><span class="p">:</span><span class="w"> </span><span class="mi">1589436922972</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">Message</span><span class="w"> </span><span class="err">output</span><span class="w"> </span><span class="err">time</span><span class="w">
+  </span><span class="nl">"T"</span><span class="p">:</span><span class="w"> </span><span class="mi">1589436922959</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">Transaction</span><span class="w"> </span><span class="err">time</span><span class="w">
+  </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"4.00000000"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="w">
+      </span><span class="s2">"431.00000000"</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">QTY</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"4.00000200"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"12.00000000"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Test connectivity to the Rest API.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET /fapi/depth</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; Valid limits:[5, 10, 20, 50, 100, 500, 1000]</td>
+</tr>
+</tbody></table>
+<h2 id='futures-recent-trade-list'>Futures Recent Trade List</h2>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"lastUpdateId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1027024</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"E"</span><span class="p">:</span><span class="w"> </span><span class="mi">1589436922972</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">Message</span><span class="w"> </span><span class="err">output</span><span class="w"> </span><span class="err">time</span><span class="w">
+  </span><span class="nl">"T"</span><span class="p">:</span><span class="w"> </span><span class="mi">1589436922959</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">Transaction</span><span class="w"> </span><span class="err">time</span><span class="w">
+  </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"4.00000000"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="w">
+      </span><span class="s2">"431.00000000"</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">QTY</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"4.00000200"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"12.00000000"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Test connectivity to the Rest API.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET /fapi/trades</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; Max: 1000.</td>
+</tr>
+</tbody></table>
+<h2 id='futures-kline-candlestick-data'>Futures Kline/Candlestick Data</h2>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1499040000000</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">Open</span><span class="w"> </span><span class="err">time</span><span class="w">
+    </span><span class="s2">"0.01634790"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Open</span><span class="w">
+    </span><span class="s2">"0.80000000"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">High</span><span class="w">
+    </span><span class="s2">"0.01575800"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Low</span><span class="w">
+    </span><span class="s2">"0.01577100"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Close</span><span class="w">
+    </span><span class="s2">"148976.11427815"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Volume</span><span class="w">
+    </span><span class="mi">1499644799999</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">Close</span><span class="w"> </span><span class="err">time</span><span class="w">
+    </span><span class="s2">"2434.19055334"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+    </span><span class="mi">308</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">trades</span><span class="w">
+    </span><span class="s2">"1756.87402397"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">base</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+    </span><span class="s2">"28.46694368"</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+    </span><span class="s2">"17928899.62484339"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Ignore.</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>Kline/candlestick bars for a symbol.
+Klines are uniquely identified by their open time.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET /fapi/klines</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>interval</td>
+<td>ENUM</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 5000</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+If startTime and endTime are not sent, the most recent klines are returned.
 </aside>
 <h1 id='errors'>Errors</h1>
 <p>The Triunits API uses the following error codes:</p>
