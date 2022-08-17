@@ -334,6 +334,9 @@
                     <a href="#exchange-information" class="toc-h2 toc-link" data-title="Exchange Information">Exchange Information</a>
                   </li>
                   <li>
+                    <a href="#assets" class="toc-h2 toc-link" data-title="Assets">Assets</a>
+                  </li>
+                  <li>
                     <a href="#order-book" class="toc-h2 toc-link" data-title="Order Book">Order Book</a>
                   </li>
                   <li>
@@ -341,6 +344,9 @@
                   </li>
                   <li>
                     <a href="#kline-candlestick-data" class="toc-h2 toc-link" data-title="Kline/Candlestick Data">Kline/Candlestick Data</a>
+                  </li>
+                  <li>
+                    <a href="#full-market-ticker" class="toc-h2 toc-link" data-title="Full Market Ticker">Full Market Ticker</a>
                   </li>
                   <li>
                     <a href="#24hr-ticker-price-change-statistics" class="toc-h2 toc-link" data-title="24hr Ticker Price Change Statistics">24hr Ticker Price Change Statistics</a>
@@ -557,10 +563,7 @@ In order to pass the lot size, the following must be true for quantity/icebergQt
         </span><span class="err">//These</span><span class="w"> </span><span class="err">are</span><span class="w"> </span><span class="err">defined</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">Filters</span><span class="w"> </span><span class="err">section.</span><span class="w">
         </span><span class="err">//All</span><span class="w"> </span><span class="err">filters</span><span class="w"> </span><span class="err">are</span><span class="w"> </span><span class="err">optional</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-         </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"MARGIN"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w"> </span><span class="s2">"MARGIN"</span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -568,29 +571,65 @@ In order to pass the lot size, the following must be true for quantity/icebergQt
 <p>Current exchange trading rules and symbol information</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET /spot/exchangeInfo</code></p>
+<h2 id='assets'>Assets</h2>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"512"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"assetCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INJ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"assetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Injective Protocol"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"commissionRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"freeAuditWithdrawAmt"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"freeUserChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1603080237000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gas"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isLegalMoney"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reconciliationAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"seqNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chineseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Injective Protocol"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cnLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://triunits.com/icons/INJ.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullLogoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://triunits.com/icons/INJ.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"supportMarket"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"feeReferenceAsset"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"feeRate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"feeDigit"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"assetDigit"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trading"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"defi"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pos"</span><span class="p">,</span><span class="w"> </span><span class="s2">"BSC"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Launchpad"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bnbchain"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"plateType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAINWEB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"etf"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isLedgerOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delisted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>Current exchange trading rules and symbol information</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /v1/spot/assets</code></p>
 <h2 id='order-book'>Order Book</h2>
 <blockquote>
 <p>Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"lastUpdateId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1027024</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1660733030414</span><span class="p">,</span><span class="w">
   </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"4.00000000"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="w">
-      </span><span class="s2">"431.00000000"</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">QTY</span><span class="w">
+      </span><span class="s2">"4.00000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">PRICE</span><span class="w">
+      </span><span class="s2">"431.00000000"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">QTY</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"4.00000200"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"12.00000000"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"4.00000200"</span><span class="p">,</span><span class="w"> </span><span class="s2">"12.00000000"</span><span class="p">]]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Exchange Order Book</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET /spot/depth</code></p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET /v1/spot/orderbook/:symbol</code></p>
 <h3 id='limits'>Limits</h3>
 <p>5, 10, 20, 50, 100, 500, 1000, 5000</p>
 <h3 id='url-parameters'>URL Parameters</h3>
@@ -606,30 +645,28 @@ In order to pass the lot size, the following must be true for quantity/icebergQt
 <td>symbol</td>
 <td>STRING</td>
 <td>YES</td>
-<td></td>
+<td>E.g. /orderbook/BTC_USDT or, /orderbook/BTCUSDT</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>Default 100; max 5000</td>
+<td>Default 500; max 5000</td>
 </tr>
 </tbody></table>
 <h2 id='recent-trades-list'>Recent Trades List</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28457</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000100"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"qty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.00000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quoteQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.000012"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499865549590</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"isBuyerMaker"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"isBestMatch"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="nl">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71.60000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.93060000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66.63096000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1660731757959</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>Get recent trades.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET /spot/trades</code></p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET /v1/spot/trades/:symbol</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -643,7 +680,7 @@ In order to pass the lot size, the following must be true for quantity/icebergQt
 <td>symbol</td>
 <td>STRING</td>
 <td>YES</td>
-<td></td>
+<td>E.g. /trades/BTC_USDT or, /trades/BTCUSDT</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -658,24 +695,24 @@ In order to pass the lot size, the following must be true for quantity/icebergQt
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">[</span><span class="w">
-    </span><span class="mi">1499040000000</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">Open</span><span class="w"> </span><span class="err">time</span><span class="w">
-    </span><span class="s2">"0.01634790"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Open</span><span class="w">
-    </span><span class="s2">"0.80000000"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">High</span><span class="w">
-    </span><span class="s2">"0.01575800"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Low</span><span class="w">
-    </span><span class="s2">"0.01577100"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Close</span><span class="w">
-    </span><span class="s2">"148976.11427815"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Volume</span><span class="w">
-    </span><span class="mi">1499644799999</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">Close</span><span class="w"> </span><span class="err">time</span><span class="w">
-    </span><span class="s2">"2434.19055334"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
-    </span><span class="mi">308</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">trades</span><span class="w">
-    </span><span class="s2">"1756.87402397"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">base</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
-    </span><span class="s2">"28.46694368"</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+    </span><span class="mi">1499040000000</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Open</span><span class="w"> </span><span class="err">time</span><span class="w">
+    </span><span class="s2">"0.01634790"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Open</span><span class="w">
+    </span><span class="s2">"0.80000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">High</span><span class="w">
+    </span><span class="s2">"0.01575800"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Low</span><span class="w">
+    </span><span class="s2">"0.01577100"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Close</span><span class="w">
+    </span><span class="s2">"148976.11427815"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Volume</span><span class="w">
+    </span><span class="mi">1499644799999</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Close</span><span class="w"> </span><span class="err">time</span><span class="w">
+    </span><span class="s2">"2434.19055334"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+    </span><span class="mi">308</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">trades</span><span class="w">
+    </span><span class="s2">"1756.87402397"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">base</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+    </span><span class="s2">"28.46694368"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
     </span><span class="s2">"17928899.62484339"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Ignore.</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>Kline/candlestick bars for a symbol.
 Klines are uniquely identified by their open time.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET /spot/klines</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
@@ -721,6 +758,36 @@ Klines are uniquely identified by their open time.</p>
 <aside class="notice">
 If startTime and endTime are not sent, the most recent klines are returned.
 </aside>
+<h2 id='full-market-ticker'>Full Market Ticker</h2>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"1INCHBTC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"priceChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000004"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.116"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"weightedAvgPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00003439"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prevClosePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00003440"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00003441"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43.50000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bidPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00003435"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"askPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00003440"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"openPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00003437"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"highPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00003500"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lowPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00003396"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"134350.10000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quoteVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.62030682"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"openTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1660646195623</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"closeTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1660732595623</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9414995</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9418189</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3195</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>24 hour rolling window price change statistics. Careful when accessing this with no symbol.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET /v1/spot/ticker</code></p>
 <h2 id='24hr-ticker-price-change-statistics'>24hr Ticker Price Change Statistics</h2>
 <blockquote>
 <p>Response:</p>
@@ -742,9 +809,9 @@ If startTime and endTime are not sent, the most recent klines are returned.
   </span><span class="nl">"quoteVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.30000000"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"openTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499783499040</span><span class="p">,</span><span class="w">
   </span><span class="nl">"closeTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499869899040</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"firstId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28385</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">First</span><span class="w"> </span><span class="err">tradeId</span><span class="w">
-  </span><span class="nl">"lastId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28460</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Last</span><span class="w"> </span><span class="err">tradeId</span><span class="w">
-  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">76</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">Trade</span><span class="w"> </span><span class="err">count</span><span class="w">
+  </span><span class="nl">"firstId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28385</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">First</span><span class="w"> </span><span class="err">tradeId</span><span class="w">
+  </span><span class="nl">"lastId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28460</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Last</span><span class="w"> </span><span class="err">tradeId</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Trade</span><span class="w"> </span><span class="err">count</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -768,14 +835,14 @@ If startTime and endTime are not sent, the most recent klines are returned.
     </span><span class="nl">"quoteVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.30000000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"openTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499783499040</span><span class="p">,</span><span class="w">
     </span><span class="nl">"closeTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499869899040</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"firstId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28385</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">First</span><span class="w"> </span><span class="err">tradeId</span><span class="w">
-    </span><span class="nl">"lastId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28460</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Last</span><span class="w"> </span><span class="err">tradeId</span><span class="w">
-    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">76</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">Trade</span><span class="w"> </span><span class="err">count</span><span class="w">
+    </span><span class="nl">"firstId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28385</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">First</span><span class="w"> </span><span class="err">tradeId</span><span class="w">
+    </span><span class="nl">"lastId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28460</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Last</span><span class="w"> </span><span class="err">tradeId</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Trade</span><span class="w"> </span><span class="err">count</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>24 hour rolling window price change statistics. Careful when accessing this with no symbol.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET /spot/ticker/24hr</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
@@ -852,7 +919,7 @@ If the symbol is not sent, prices for all symbols will be returned in an array.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>OR </p>
+<p>OR</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
